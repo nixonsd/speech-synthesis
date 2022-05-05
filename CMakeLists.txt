@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(test LANGUAGES CXX)
+project(speech-synthesis LANGUAGES CXX)
 
 add_definitions(-DUNICODE -D_UNICODE)
 
@@ -28,35 +28,34 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(OpenMP REQUIRED)
 
 # Inclusion of code
 set(VIEWS_DIR "${CMAKE_SOURCE_DIR}/views")
-set(HEADERS_DIR "${CMAKE_SOURCE_DIR}/headers")
 set(SOURCES_DIR "${CMAKE_SOURCE_DIR}/sources")
 set(RESOURCES_DIR "${CMAKE_SOURCE_DIR}/resources")
 
 include_directories(${VIEWS_DIR})
-include_directories(${HEADERS_DIR})
 include_directories(${SOURCES_DIR})
 
 file(GLOB_RECURSE SOURCES
   "${VIEWS_DIR}/*.ui"
-  "${HEADERS_DIR}/*.h"
+  "${SOURCES_DIR}/*.h"
   "${SOURCES_DIR}/*.cpp"
 )
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${VIEWS_DIR})
 
 if (WIN32)
-	add_executable(test WIN32 ${SOURCES})
+	add_executable(speech-synthesis WIN32 ${SOURCES})
 elseif(UNIX)
-	add_executable(test ${SOURCES})
+	add_executable(speech-synthesis ${SOURCES})
 endif()
 
 # Include QT libraries
-target_link_libraries(test PRIVATE Qt5::Widgets)
+target_link_libraries(speech-synthesis PRIVATE Qt5::Widgets)
+target_link_libraries(speech-synthesis PRIVATE OpenMP::OpenMP_CXX)
 
 # Add the target includes
-target_include_directories(test PRIVATE ${VIEWS_DIR})
-target_include_directories(test PRIVATE ${HEADERS_DIR})
-target_include_directories(test PRIVATE ${SOURCES_DIR})
+target_include_directories(speech-synthesis PRIVATE ${VIEWS_DIR})
+target_include_directories(speech-synthesis PRIVATE ${SOURCES_DIR})

@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <test_source/test_source.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,5 +20,7 @@ class MainWindow : public QMainWindow {
 
  private:
   Ui::MainWindow *ui;
+  void onExecuteButtonClick();
+  void exit();
 };
 #endif  // MAINWINDOW_H

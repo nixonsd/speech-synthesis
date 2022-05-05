@@ -1,4 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "C_Cpp.clang_format_fallbackStyle": "Google",
+    "files.associations": {
+        "new": "cpp"
+    },
 }
