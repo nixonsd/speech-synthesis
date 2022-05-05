@@ -5,25 +5,27 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-
   QObject::connect(ui->pushButton, &QPushButton::clicked, this,
-                   &MainWindow::onExecuteButtonClick);
-
+                   &MainWindow::onButtonClick);
   QObject::connect(ui->actionExit, &QAction::triggered, this,
-                   &MainWindow::exit);
+                   &MainWindow::onExitAction);
+  QObject::connect(ui->actionInfo, &QAction::triggered, this,
+                   &MainWindow::onInfoAction);
 }
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::onExecuteButtonClick() {
-  test_source t;
+void MainWindow::onButtonClick() {}
 
-  if (t.test()) {
-    QMessageBox msgBox;
-    msgBox.setText("The document has been modified.");
-    msgBox.setIcon(QMessageBox::Information);
-    msgBox.exec();
-  }
+void MainWindow::onInfoAction() {
+  QMessageBox msg;
+  msg.setIcon(QMessageBox::Information);
+  msg.setWindowTitle("Information Message");
+  msg.setText(
+      "The program has been designed for educational purposes. For more "
+      "information, please contact me (Bohdan Kiselov) by e-mail: "
+      "kiselov.bohdan2@gmail.com");
+  msg.exec();
 }
 
-void MainWindow::exit() { this->close(); }
+void MainWindow::onExitAction() { this->close(); }
