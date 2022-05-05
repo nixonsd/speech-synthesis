@@ -1,6 +1,5 @@
 #include "test_source.h"
 
-test_source::test_source()
-{
+#include <iostream>
 
-}
+test_source::test_source() { gets(); }
