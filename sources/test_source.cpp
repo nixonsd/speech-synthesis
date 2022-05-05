@@ -2,4 +2,4 @@
 
 #include <iostream>
 
-test_source::test_source() { gets(); }
+test_source::test_source() {}
