@@ -30,8 +30,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(OpenMP REQUIRED)
 
-# Include espeak library
-find_library(ESPEAK_LIBRARY espeak-ng libs)
+# Espeak library
+find_library(ESPEAK_LIBRARY espeak-ng REQUIRED)
 
 # Inclusion of code
 set(VIEWS_DIR "${CMAKE_SOURCE_DIR}/views")
