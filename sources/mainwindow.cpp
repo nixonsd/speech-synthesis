@@ -2,6 +2,11 @@
 
 #include "./ui_mainwindow.h"
 
+espeak_AUDIO_OUTPUT output = AUDIO_OUTPUT_SYNCH_PLAYBACK;
+char *path = NULL;
+void *user_data;
+unsigned int *identifier;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
@@ -15,7 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::onButtonClick() {}
+void MainWindow::onButtonClick() {
+
+}
 
 void MainWindow::onInfoAction() {
   QMessageBox msg;

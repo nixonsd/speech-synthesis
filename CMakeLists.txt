@@ -30,6 +30,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(OpenMP REQUIRED)
 
+# Include espeak library
+find_library(ESPEAK_LIBRARY espeak-ng libs)
+
 # Inclusion of code
 set(VIEWS_DIR "${CMAKE_SOURCE_DIR}/views")
 set(SOURCES_DIR "${CMAKE_SOURCE_DIR}/sources")
@@ -55,6 +58,7 @@ endif()
 # Include QT libraries
 target_link_libraries(speech-synthesis PRIVATE Qt5::Widgets)
 target_link_libraries(speech-synthesis PRIVATE OpenMP::OpenMP_CXX)
+target_link_libraries(speech-synthesis PRIVATE ${ESPEAK_LIBRARY})
 
 # Add the target includes
 target_include_directories(speech-synthesis PRIVATE ${VIEWS_DIR})

@@ -1,4 +1,8 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
-    "C_Cpp.clang_format_fallbackStyle": "Google"
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "files.associations": {
+        "speak-ng.c": "cpp",
+        "espeak-ng.c": "cpp"
+    }
 }
