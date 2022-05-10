@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QKeyEvent>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -26,6 +27,7 @@ class MainWindow : public QMainWindow {
  private:
   Ui::MainWindow *ui;
   void onButtonClick();
-  void onInfoAction();
+  void onAboutAction();
+  // void changeEvent(QEvent *e) override;
 };
 #endif  // MAINWINDOW_H

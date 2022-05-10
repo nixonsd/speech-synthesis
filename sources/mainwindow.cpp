@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
 
   QObject::connect(ui->pushButton, &QPushButton::clicked, this,
                    &MainWindow::onButtonClick);
-  QObject::connect(ui->actionInfo, &QAction::triggered, this,
-                   &MainWindow::onInfoAction);
+  QObject::connect(ui->actionAbout, &QAction::triggered, this,
+                   &MainWindow::onAboutAction);
 
   ui->textEdit->installEventFilter(this);
 }
@@ -41,7 +41,7 @@ void MainWindow::onButtonClick() {
   espeakInterface->Synth(qbyte.data());
 }
 
-void MainWindow::onInfoAction() {
+void MainWindow::onAboutAction() {
   QMessageBox msg;
   msg.setIcon(QMessageBox::Icon::Information);
   msg.setWindowTitle("Information Message");
