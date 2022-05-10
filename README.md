@@ -15,4 +15,4 @@ Install espeak-ng library using official [espeak-ng documentation](https://githu
 ```
 
 # License
-The "Speech Synthesis" (speech synthesizer) is released under [MIT License](./LICENSE) with studying purposes.
+The "Speech Synthesis" (speech synthesizer) is released under [MIT License](./LICENSE) for studying purposes.
