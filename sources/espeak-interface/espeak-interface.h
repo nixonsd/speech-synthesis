@@ -7,11 +7,13 @@
 namespace SpeechSynthesis {
 class EspeakInterface {
  private:
-  char *voiceName_ = {"English"};
+  const char *voiceName_ = {"English"};
   EspeakOptions *espeakOptions_;
 
  protected:
   EspeakInterface(EspeakOptions &);
+  ~EspeakInterface();
+
   static EspeakInterface *espeakInterface_;
 
  public:

@@ -1,10 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <espeak-interface.h>
+
 #include <QMainWindow>
 #include <QMessageBox>
-
-#include <espeak-interface.h>
+#include <QKeyEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,10 +20,12 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
+ protected:
+  bool eventFilter(QObject *obj, QEvent *ev) override;
+
  private:
   Ui::MainWindow *ui;
   void onButtonClick();
-  void onExitAction();
   void onInfoAction();
 };
 #endif  // MAINWINDOW_H

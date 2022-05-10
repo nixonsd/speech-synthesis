@@ -10,6 +10,8 @@ EspeakInterface::EspeakInterface(EspeakOptions& espeakOptions)
   espeak_SetVoiceByName(voiceName_);
 }
 
+EspeakInterface::~EspeakInterface() { delete espeakInterface_; }
+
 EspeakInterface* EspeakInterface::GetInstance(EspeakOptions& espeakOptions) {
   if (espeakInterface_ == nullptr) {
     espeakInterface_ = new EspeakInterface(espeakOptions);

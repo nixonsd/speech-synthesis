@@ -43,6 +43,7 @@ include_directories(${VIEWS_DIR})
 include_directories(${SOURCES_DIR})
 include_directories(${ESPEAK_INTERFACE_DIR})
 
+
 file(GLOB_RECURSE SOURCES
   "${VIEWS_DIR}/*.ui"
   "${SOURCES_DIR}/*.h"
