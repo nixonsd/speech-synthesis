@@ -2,13 +2,14 @@
 
 #include "./ui_mainwindow.h"
 
-espeak_AUDIO_OUTPUT output = AUDIO_OUTPUT_SYNCH_PLAYBACK;
-char *path = NULL;
-void *user_data;
-unsigned int *identifier;
+SpeechSynthesis::EspeakInterface *espeakInterface = nullptr;
+SpeechSynthesis::EspeakOptions espeakOptions = {AUDIO_OUTPUT_SYNCH_PLAYBACK,
+                                                500, NULL, 0};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
+  espeakInterface =
+      SpeechSynthesis::EspeakInterface::GetInstance(espeakOptions);
   ui->setupUi(this);
   QObject::connect(ui->pushButton, &QPushButton::clicked, this,
                    &MainWindow::onButtonClick);
@@ -21,7 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::onButtonClick() {
-
+  QString qstr = ui->textEdit->toPlainText();
+  QByteArray qbyte = qstr.toLocal8Bit();
+  espeakInterface->Synth(qbyte.data());
 }
 
 void MainWindow::onInfoAction() {

@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include <espeak-ng/speak_lib.h>
+
+#include <espeak-interface.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
