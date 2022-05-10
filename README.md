@@ -1,5 +1,5 @@
 # speech-synthesis
-Light cross-platform speech synthesizer.
+Simple cross-platform speech synthesizer.
 
 # Pre-build
 Install espeak-ng library using official [espeak-ng documentation](https://github.com/espeak-ng/espeak-ng/blob/master/docs/building.md).
