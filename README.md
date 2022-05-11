@@ -2,7 +2,7 @@
 Simple cross-platform speech synthesizer.
 
 # Pre-build
-Install espeak-ng library using official [espeak-ng documentation](https://github.com/espeak-ng/espeak-ng/blob/master/docs/building.md).
+Install espeak-ng library using official [espeak-ng documentation](https://github.com/espeak-ng/espeak-ng/blob/master/docs/integration.md).
 
 # Build
 1. Configure CMake Project
