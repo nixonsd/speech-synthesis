@@ -7,7 +7,7 @@ Install espeak-ng library using official [espeak-ng documentation](https://githu
 # Build
 1. Configure CMake Project
 ``` 
- cmake --configure
+ cmake --configure .
 ```
 2. Build the project with command below
 ```
