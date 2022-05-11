@@ -5,7 +5,11 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QException>
+#include <QTextStream>
 #include <QKeyEvent>
+#include <QFile>
 #include <QTimer>
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +32,6 @@ class MainWindow : public QMainWindow {
   Ui::MainWindow *ui;
   void onButtonClick();
   void onAboutAction();
-  // void changeEvent(QEvent *e) override;
+  void onOpenAction();
 };
 #endif  // MAINWINDOW_H

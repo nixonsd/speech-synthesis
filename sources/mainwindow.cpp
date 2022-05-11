@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
                    &MainWindow::onButtonClick);
   QObject::connect(ui->actionAbout, &QAction::triggered, this,
                    &MainWindow::onAboutAction);
+  QObject::connect(ui->actionOpen, &QAction::triggered, this,
+                   &MainWindow::onOpenAction);
 
   ui->textEdit->installEventFilter(this);
 }
@@ -39,6 +41,30 @@ void MainWindow::onButtonClick() {
   QString qstr = ui->textEdit->toPlainText();
   QByteArray qbyte = qstr.toLocal8Bit();
   espeakInterface->Synth(qbyte.data());
+}
+
+void MainWindow::onOpenAction() {
+  QFileDialog *dialog = new QFileDialog(this, tr("Choose file to open..."),
+                                        nullptr, tr("Text files (*.txt)"));
+  QString fileName = dialog->getOpenFileName();
+  if (!fileName.isEmpty()) {
+    QFile *file = new QFile(fileName);
+    if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
+      QMessageBox msg;
+      QString errMsg = "Cannot open file " + fileName;
+      msg.setIcon(QMessageBox::Icon::Critical);
+      msg.setWindowTitle("Error reading file");
+      msg.setText(errMsg);
+      msg.exec();
+    } else {
+      QTextStream textStream(file);
+      QString readText = textStream.readAll();
+      ui->textEdit->setPlainText(readText);
+      file->close();
+    }
+    delete file;
+  }
+  delete dialog;
 }
 
 void MainWindow::onAboutAction() {
