@@ -2,9 +2,15 @@
 
 #include "./ui_mainwindow.h"
 
+#ifdef WIN32 
+  #define ESPEAK_DATA_PATH "./"
+#else
+  #define ESPEAK_DATA_PATH NULL
+#endif
+
 SpeechSynthesis::EspeakInterface *espeakInterface = nullptr;
 SpeechSynthesis::EspeakOptions espeakOptions = {AUDIO_OUTPUT_SYNCH_PLAYBACK,
-                                                500, NULL, 0};
+                                                500, ESPEAK_DATA_PATH, 0};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
